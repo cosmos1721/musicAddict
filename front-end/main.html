@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player Extension</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://use.fontawesome.com/15af25ac7b.js"></script>
+
+    </head>
+    <body>
+    
+    <div class="navbar">
+      <ul>
+        <li class="navbar-section fixed-section">
+            <a href="#" >Search</a>
+            <!-- <img src="logo.png" alt="logo" width="20" height="20"> -->
+            <a href="#" >Off</a>
+          </li>
+        <li class="navbar-section">
+          <div id="indicator" class="indicator"></div>
+          <a href="#" class="tab" onclick="activateTab(event, 'Player')">Player</a>
+          <a href="#" class="tab" onclick="activateTab(event, 'Queue')">Queue</a>
+          <a href="#" class="tab" onclick="activateTab(event, 'Playlist')">Playlist</a>
+        </li>
+      </ul>
+    </div>
+    
+    
+    <div id="Player" class="tabcontent">
+      <main class="main-align" id="mainPlayer">
+            <!-- img from music api -->
+            <img id="albumArt" src="" alt="album art" class="art">
+            <span>
+                  <div class="info">
+                    <h1 id="songTitle">Song Title</h1>
+                    <p id="songArtist">Artist Name</p>
+                  </div>
+                  <div class="progress-container">
+                    <div class="prog-time">
+                      <p id="currentTime">0:00</p>
+                      <p id="totalTime">0:00</p>
+                    </div>
+                    <div class="prog-bar">
+                      <div id="progressBar" class="prog-bar-inner" style="width: 0%;"></div>
+                    </div>
+            </div><!--  progress  -->
+            <ul class="buttons">
+              <a href="#" id="shuffleButton" class="button button-sm">
+                <img id='shuffleButtonIcon' src="/front-end/icons/shuffle.png" alt="shuffle" >
+              </a>
+              <a href="#" id="previousButton" class="button button-md">
+                <img src="/front-end/icons/previous.png" alt="Previous" >
+              </a>
+              <a href="#" id="playPauseButton" class="button button-lg">
+                <img id="playPauseIcon" src="/front-end/icons/play.png" alt="Play/pause" >
+              </a>
+              <a href="#" id="nextButton" class="button button-md">
+                <img src="/front-end/icons/next.png" alt="next" >
+              </a>
+              <a href="#" id="addToPlaylistButton" class="button button-sm">
+                <img src="/front-end/icons/add-to-playlist.png" alt="Playlist" >
+              </a>
+
+            </ul>
+            <div class="bar"></div><!--  bar  -->
+        </span>
+        </main>
+      </div>
+      
+      
+      <div id="Queue" class="tabcontent">
+        <h2>Queue</h2>
+        <p>Queue content goes here...</p>
+      </div>
+      
+      <div id="Playlist" class="tabcontent">
+        <h2>Playlist</h2>
+        <p>Playlist content goes here...</p>
+      </div>
+      
+<script src="script.js"></script>
+</body>
+</html>
+

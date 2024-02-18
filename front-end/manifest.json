@@ -1,0 +1,31 @@
+{
+  "name": "musicAddict",
+  "version": "1.0.0",
+  "description": "An interactive music app.",
+  "manifest_version": 3,
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/default16.png", 
+      "32": "icons/play.png", 
+      "48": "icons/default48.png" 
+    },
+    "default_popup": "main.html"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "web_accessible_resources": [
+    "icons/*",
+    "main.html",
+    "style.css",
+    "script.js"
+  ]
+}
