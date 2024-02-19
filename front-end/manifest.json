@@ -1,31 +1,44 @@
-{
-  "name": "musicAddict",
-  "version": "1.0.0",
-  "description": "An interactive music app.",
-  "manifest_version": 3,
-  "browser_action": {
+{  "action": {    
     "default_icon": {
-      "16": "icons/default16.png", 
-      "32": "icons/play.png", 
-      "48": "icons/default48.png" 
-    },
-    "default_popup": "main.html"
+          "16": "icons/play.png",
+          "32": "icons/play.png"
+          },
+    "default_popup": "main.html",
+    "default_title": "__MSG_extName__"
   },
+  "default_locale": "en",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
   "permissions": [
     "activeTab",
     "storage",
     "tabs",
+    "\u003Call_urls",
+    "webRequest",
+    "webNavigation",
+    "contextMenus",
+    "cookies",
     "http://*/*",
-    "https://*/*"
+    "https://*/*",
+    "unlimitedStorage",
+    "content_scripts",
+    "declarativeContent",
+    "webRequestBlocking",
+    "scripting",
+    "alarms",
+    "notifications",
+    "declarativeNetRequest"
   ],
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
-  "web_accessible_resources": [
-    "icons/*",
-    "main.html",
-    "style.css",
-    "script.js"
+  "name": "musicAddict",
+  "version": "1.0.0",
+  "description": "An interactive music app.",
+  "manifest_version": 2,
+  "minimum_chrome_version": "79.0",
+  "web_accessible_resources": [ {
+    "resources": [ "icons/*", "main.html", "content.js", "main.js" ]}
   ]
 }
