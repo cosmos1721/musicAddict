@@ -8,14 +8,16 @@
     <script src="https://use.fontawesome.com/15af25ac7b.js"></script>
 
     </head>
-    <body>
+    <body id="body">
     
     <div class="navbar">
       <ul>
         <li class="navbar-section fixed-section">
-            <a href="#" >Search</a>
-            <!-- <img src="logo.png" alt="logo" width="20" height="20"> -->
-            <a href="#" >Off</a>
+          <div class="container">
+            <input type="text" placeholder="Search...">
+            <div class="search"></div>
+          </div>
+            <img class="image" src="/front-end/icons/d1.png" alt="logo" >
           </li>
         <li class="navbar-section">
           <div id="indicator" class="indicator"></div>
@@ -26,7 +28,6 @@
       </ul>
     </div>
     
-    
     <div id="Player" class="tabcontent">
       <main class="main-align" id="mainPlayer">
             <!-- img from music api -->
@@ -36,15 +37,15 @@
                     <h1 id="songTitle">Song Title</h1>
                     <p id="songArtist">Artist Name</p>
                   </div>
-                  <div class="progress-container">
-                    <div class="prog-time">
-                      <p id="currentTime">0:00</p>
-                      <p id="totalTime">0:00</p>
+                    <div id="timeline">
+                      <span id="currentTime">--:--</span>
+                      <span id="totalTime">--:--</span>
+                      <div class="slider" data-direction="horizontal">
+                        <div class="progress">
+                          <div class="pin" id="progress-pin" data-method="rewind"></div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="prog-bar">
-                      <div id="progressBar" class="prog-bar-inner" style="width: 0%;"></div>
-                    </div>
-            </div><!--  progress  -->
             <ul class="buttons">
               <a href="#" id="shuffleButton" class="button button-sm">
                 <img id='shuffleButtonIcon' src="/front-end/icons/shuffle.png" alt="shuffle" >
@@ -59,13 +60,13 @@
                 <img src="/front-end/icons/next.png" alt="next" >
               </a>
               <a href="#" id="addToPlaylistButton" class="button button-sm">
-                <img src="/front-end/icons/add-to-playlist.png" alt="Playlist" >
+                <img src="/front-end/icons/playlist.png" alt="Playlist" >
               </a>
 
             </ul>
-            <div class="bar"></div><!--  bar  -->
         </span>
         </main>
+        
       </div>
       
       

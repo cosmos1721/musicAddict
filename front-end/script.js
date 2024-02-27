@@ -20,29 +20,35 @@ function activateTab(evt, tabName) {
   
   
 
-  
-  musicQueue = [
-    { title: "Song 1", artist: "Artist 1", albumArt: "url-to-album-art-1.jpg", url: "front-end/icons/ram_siya.mp3", duration: 200 },
-    { title: "Song 2", artist: "Artist 2", albumArt: "url-to-album-art-2.jpg", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration: 200 },
+  musicQueue1 = [
+    { title: "Song 1", artist: "Artist 1", albumArt: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkrFlvX7gzW284Kw2lz6_MJ0ZOq8pEOfq8ixfKP5ADOw&s", url: "https://music.youtube.com/watch?v=r7Rn4ryE_w8&si=_GebGmX1SGAWw8EN" , duration: 300},
+    { title: "Song 2", artist: "Artist 2", albumArt: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
     { title: "Song 3", artist: "Artist 3", albumArt: "url-to-album-art-3.jpg", url: "/mnt/devesh/code/projects_git/musicAddict/front-end/icons/Ram Siya ram.mp3", duration: 200 }
   ];
+  
+  let musicQueue = [];
 
 let audio = new Audio();
-
+currentSongIndex = 0; 
 function fetchSongsFromLastFm() {
-  currentSongIndex = 0; // Reset to the first song
   currentSong = musicQueue[currentSongIndex]; // Set the current song to the first song
   updatePlayer();
   updateProgressBar();
 }
-
 function updatePlayer() {
   if (!currentSong) return; 
+  const mainPlayer = document.getElementById('body');
   document.getElementById('albumArt').src = currentSong.albumArt;
   document.getElementById('songTitle').textContent = currentSong.title;
   document.getElementById('songArtist').textContent = currentSong.artist;
-  
   audio.src = currentSong.url;
+  let blurredBackground = document.querySelector('.blurred-background');
+  if (!blurredBackground) {
+    blurredBackground = document.createElement('div');
+    blurredBackground.classList.add('blurred-background');
+    mainPlayer.insertBefore(blurredBackground, mainPlayer.firstChild); // Insert as the first child
+  }
+  blurredBackground.style.backgroundImage = `url('${currentSong.albumArt}')`;
   audio.addEventListener('loadedmetadata', function() {
     document.getElementById('totalTime').textContent = formatTime(Math.round(audio.duration));
   });
@@ -66,15 +72,23 @@ function formatTime(seconds) {
 let progressInterval;
 
 function updateProgressBar() {
-  clearInterval(progressInterval); // Clear any existing intervals before starting a new one
-
-  // Update the progress bar as the song plays
-  audio.ontimeupdate = function() {
-    let currentProgress = audio.currentTime;
-    let songDuration = audio.duration;
-    document.getElementById('progressBar').style.width = `${(currentProgress / songDuration) * 100}%`;
-    document.getElementById('currentTime').textContent = formatTime(Math.round(currentProgress));
+  
+  const progressBar = document.querySelector(".slider .progress");
+  audio.ontimeupdate = () => {
+    const percentage = (audio.currentTime / audio.duration) * 100;
+    progressBar.style.width = `${percentage}%`;
+    document.getElementById('currentTime').textContent = formatTime(Math.round(audio.currentTime));
+    document.getElementById('totalTime').textContent = formatTime(Math.round(audio.duration));
   };
+  
+  // Allow user to seek within the song
+  const slider = document.querySelector(".slider");
+  slider.addEventListener("click", function(e) {
+    const sliderWidth = this.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+    audio.currentTime = (clickX / sliderWidth) * duration;
+  });
 }
 
 
@@ -95,16 +109,6 @@ function nextSong() {
   updatePlayer();
   // updateProgressBar();
 }
-
-// function shuffleSongs() {
-//   for (let i = musicQueue.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1)); // Random index from 0 to i
-//     [musicQueue[i], musicQueue[j]] = [musicQueue[j], musicQueue[i]]; // Swap elements
-//   }
-//   currentSongIndex = 0; // Reset to the first song of the shuffled array MAKE SURE TO UPDAT THE QUEUE AFTERE THIS 
-//   updatePlayer();
-//   updateProgressBar(); // Reset the progress bar for the new song
-// }
 
 let isShuffleActive = false;
 
@@ -131,22 +135,26 @@ function shuffleSongs() {
 }
 
 
+
+
 function playPauseSong() {
+  const albumArt = document.getElementById('albumArt');
+  const playPauseIcon = document.getElementById('playPauseIcon');
   if (audio.paused) {
     audio.play().then(() => {
-      document.getElementById('playPauseIcon').src = '/front-end/icons/pause.png';
+      playPauseIcon.src = '/front-end/icons/pause.png';
     }).catch(error => console.error("Playback failed", error));
   } else {
     audio.pause();
-    document.getElementById('playPauseIcon').src = '/front-end/icons/play.png';
+    playPauseIcon.src = '/front-end/icons/play.png';
   }
 }
+
 
 
 function addToPlaylist() {
   pass; // Replace with actual logic to add the current song to the playlist
 }
-
 
 
 
@@ -165,6 +173,16 @@ function addToPlaylist() {
       tabs[0].click();
     }
     fetchSongsFromLastFm();
+    document.documentElement.addEventListener('keydown', function(event) {
+      if (event.key === ' ') {
+        playPauseSong();
+      } else if (event.key === 'ArrowRight') {
+        nextSong();
+      } else if (event.key === 'ArrowLeft') {
+        previousSong();
+      }
+    });
+    
     document.getElementById('playPauseButton').addEventListener('click', playPauseSong);
     document.getElementById('previousButton').addEventListener('click', previousSong);
     document.getElementById('nextButton').addEventListener('click', nextSong);
@@ -172,3 +190,6 @@ function addToPlaylist() {
     document.getElementById('addToPlaylistButton').addEventListener('click', addToPlaylist);
     // Fetch songs from Last.fm when the document is ready (simulated for this example)
   });
+
+
+  
