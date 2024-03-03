@@ -1,0 +1,8 @@
+requests
+dotenv
+fastapi
+uvicorn
+pymongo
+os
+base64
+asyncio

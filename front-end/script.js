@@ -18,7 +18,7 @@ function activateTab(evt, tabName) {
     indicator.style.left = activeTab.offsetLeft + "px";
   }
   
-  
+url = "http://127.0.0.1:8000/"
 
   musicQueue1 = [
     { title: "Song 1", artist: "Artist 1", albumArt: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkrFlvX7gzW284Kw2lz6_MJ0ZOq8pEOfq8ixfKP5ADOw&s", url: "https://music.youtube.com/watch?v=r7Rn4ryE_w8&si=_GebGmX1SGAWw8EN" , duration: 300},
@@ -26,7 +26,7 @@ function activateTab(evt, tabName) {
     { title: "Song 3", artist: "Artist 3", albumArt: "url-to-album-art-3.jpg", url: "/mnt/devesh/code/projects_git/musicAddict/front-end/icons/Ram Siya ram.mp3", duration: 200 }
   ];
   
-  let musicQueue = [];
+  let musicQueue = [... musicQueue1];
 
 let audio = new Audio();
 currentSongIndex = 0; 
@@ -98,7 +98,6 @@ function previousSong() {
   currentSongIndex = currentSongIndex > 0 ? currentSongIndex - 1 : musicQueue.length - 1;
   currentSong = musicQueue[currentSongIndex];
   updatePlayer();
-  // updateProgressBar();
 }
 
 // Function to play the next song
@@ -107,7 +106,6 @@ function nextSong() {
   currentSongIndex = (currentSongIndex + 1) % musicQueue.length;
   currentSong = musicQueue[currentSongIndex];
   updatePlayer();
-  // updateProgressBar();
 }
 
 let isShuffleActive = false;
@@ -131,7 +129,6 @@ function shuffleSongs() {
   currentSongIndex = 0; // Reset to the first song of the (new) queue
   currentSong = musicQueue[currentSongIndex]; 
   updatePlayer();
-  updateProgressBar();
 }
 
 
