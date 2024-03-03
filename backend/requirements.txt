@@ -1,8 +1,7 @@
 requests
-dotenv
+python-dotenv
 fastapi
 uvicorn
 pymongo
-os
-base64
+pybase64
 asyncio
