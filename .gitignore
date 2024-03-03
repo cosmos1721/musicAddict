@@ -3,3 +3,5 @@ save.html
 teestt/
 __pycache__/
 .env
+.vscode/
+.git/
