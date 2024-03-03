@@ -21,12 +21,9 @@ async def start_background_task():
         # Sleep for 10 minutes
         await asyncio.sleep(500)   # 10 minutes = 600 seconds
 
-# Register event handler to start the background task when the app starts
-@app.on_event("startup")
-async def startup_event():
-    asyncio.create_task(start_background_task())
-
 # Endpoint to test if the server is running
 @app.get("/")
 async def read_root():
+    asyncio.create_task(start_background_task())
     return {"message": "repeat server is running."}
+# git add .; git commit -m "repeat-tempServer"; git push origin 

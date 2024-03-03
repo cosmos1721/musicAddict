@@ -135,20 +135,21 @@
 .info {
   margin: 1rem 0;
   text-align: left;
+  padding-top: 15px;
+  padding-bottom: 5%;
 }
 .info h1 {
-  font-weight: 500;
-  font-size:x-large;
+  font-weight: 400;
+  font-size: 1.2rem;
   margin-left: -2px;
-}
-.info p {
-  font-size: 1.15rem;
   padding-bottom: 2%;
 }
+
 
 #timeline {
   position: relative;
   margin: 0 auto;
+  padding-top: 5px;
 }
 #timeline span {
   color: var(--white);
@@ -168,6 +169,7 @@
   border-radius: 10px;
   cursor: pointer;
   height: 4px;
+  padding-left: 6px;
   position: relative;
   width: 100%;
 }

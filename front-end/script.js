@@ -18,7 +18,7 @@ function activateTab(evt, tabName) {
     indicator.style.left = activeTab.offsetLeft + "px";
   }
   
-url = "http://127.0.0.1:8000/"
+  url = "https://musicaddict.onrender.com/"
 
   musicQueue1 = [
     { title: "Song 1", artist: "Artist 1", albumArt: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkrFlvX7gzW284Kw2lz6_MJ0ZOq8pEOfq8ixfKP5ADOw&s", url: "https://music.youtube.com/watch?v=r7Rn4ryE_w8&si=_GebGmX1SGAWw8EN" , duration: 300},
@@ -30,17 +30,35 @@ url = "http://127.0.0.1:8000/"
 
 let audio = new Audio();
 currentSongIndex = 0; 
-function fetchSongsFromLastFm() {
+
+
+function initMusicQueue() {
   currentSong = musicQueue[currentSongIndex]; // Set the current song to the first song
   updatePlayer();
+  displayQueue();
   updateProgressBar();
 }
+
+function displayQueue() {
+  const queueElement = document.getElementById('Queue'); // Target the Queue section
+  // Clear existing queue content, but keep the title
+  
+  const list = document.createElement('ul'); // Create a new list for the queue items
+  musicQueue.forEach(song => {
+    const listItem = document.createElement('li');
+    listItem.textContent = song.title; // Each item shows the song title
+    list.appendChild(listItem); // Add the song to the list
+  });
+
+  queueElement.appendChild(list); // Append the list to the Queue section
+}
+
+
 function updatePlayer() {
   if (!currentSong) return; 
   const mainPlayer = document.getElementById('body');
   document.getElementById('albumArt').src = currentSong.albumArt;
   document.getElementById('songTitle').textContent = currentSong.title;
-  document.getElementById('songArtist').textContent = currentSong.artist;
   audio.src = currentSong.url;
   let blurredBackground = document.querySelector('.blurred-background');
   if (!blurredBackground) {
@@ -169,7 +187,7 @@ function addToPlaylist() {
     if (tabs.length > 0) {
       tabs[0].click();
     }
-    fetchSongsFromLastFm();
+    initMusicQueue();
     document.documentElement.addEventListener('keydown', function(event) {
       if (event.key === ' ') {
         playPauseSong();
@@ -185,7 +203,6 @@ function addToPlaylist() {
     document.getElementById('nextButton').addEventListener('click', nextSong);
     document.getElementById('shuffleButton').addEventListener('click', shuffleSongs);
     document.getElementById('addToPlaylistButton').addEventListener('click', addToPlaylist);
-    // Fetch songs from Last.fm when the document is ready (simulated for this example)
   });
 
 
