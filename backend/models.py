@@ -74,7 +74,7 @@ async def ytPlaylist(id : str):
 
 async def call_external_api():
     try:
-        response = requests.get("https://repeatserver.onrender.com/")
+        response = requests.get("https://repeatserver.onrender.com/temp")
         print("repeat server is running." + response.text)
     except Exception as e:
         print(f"Error occurred while making GET request: {e}")
