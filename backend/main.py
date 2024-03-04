@@ -13,12 +13,12 @@ app.add_event_handler("startup", main)
 
 @app.get("/")
 async def read_root():
-    asyncio.create_task(start_background_task())
     return {"extension" : "musicAddict"} 
 
 
 @app.get("/temp")
 async def read_temp():
+    asyncio.create_task(start_background_task())
     return "main server is running" 
 
  
