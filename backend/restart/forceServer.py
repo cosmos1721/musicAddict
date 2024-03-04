@@ -19,11 +19,13 @@ async def start_background_task():
     while True:
         await call_external_api()
         # Sleep for 10 minutes
-        await asyncio.sleep(500)   # 10 minutes = 600 seconds
+        await asyncio.sleep(551)   # 10 minutes = 600 seconds
 
 # Endpoint to test if the server is running
 @app.get("/")
 async def read_root():
     asyncio.create_task(start_background_task())
-    return {"message": "repeat server is running."}
+    return {{"message": "main server is running."},{"extension" : "repeatServer"}}
+
+
 # git add .; git commit -m "repeat-tempServer"; git push origin 

@@ -7,13 +7,16 @@ app = FastAPI()
 
 async def main():
     asyncio.create_task(upd_token())
-
-
-
 app.add_event_handler("startup", main)
+
+
+
 @app.get("/")
 async def read_root():
-    return {"extension" : "musicAddict"}
+    asyncio.create_task(start_background_task())
+    return {{"extension" : "musicAddict"}, {"message": "repeat server is running."}}
+
+
 
 
     # search for param to be given by front end logic search only for gen

@@ -69,3 +69,19 @@ async def ytPlaylist(id : str):
 
 
 # https://github.com/mohd-baquir-qureshi/music-api
+
+
+
+async def call_external_api():
+    try:
+        response = requests.get("https://repeatserver.onrender.com/")
+        print("repeat server is running." + response.text)
+    except Exception as e:
+        print(f"Error occurred while making GET request: {e}")
+
+# Function to initiate the background task
+async def start_background_task():
+    while True:
+        await call_external_api()
+        # Sleep for 10 minutes
+        await asyncio.sleep(550)   # 10 minutes = 600 seconds
