@@ -9,8 +9,9 @@ app = FastAPI()
 async def call_external_api():
     try:
         response = requests.get("https://musicaddict.onrender.com/")
+        # response = requests.get("http://127.0.0.1:8000/")
         # Do something with the response if needed
-        print("repeat server is running." + response.text)
+        print("repeat server" + response.text)
     except Exception as e:
         print(f"Error occurred while making GET request: {e}")
 
@@ -25,7 +26,7 @@ async def start_background_task():
 @app.get("/")
 async def read_root():
     asyncio.create_task(start_background_task()) 
-    return "repeat server is running"
+    return {"extension" : "repeatServer"}
 
 @app.get("/temp")
 async def read_temp():
