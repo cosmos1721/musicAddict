@@ -9,13 +9,6 @@ async def main():
     asyncio.create_task(upd_token())
 app.add_event_handler("startup", main)
 
-# Startup event handler
-@app.on_event("startup")
-async def on_startup():
-    await call_external_api()
-
-    # Start background task
-    asyncio.create_task(start_background_task())
 
 
 @app.get("/")
