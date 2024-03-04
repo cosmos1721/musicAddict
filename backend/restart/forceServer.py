@@ -32,4 +32,14 @@ async def read_root():
 async def read_temp():
     return {"extension" : "repeatServer"}
 
+
+# Startup event handler
+@app.on_event("startup")
+async def on_startup():
+    await call_external_api()
+
+    # Start background task
+    asyncio.create_task(start_background_task())
+
+
 # git add .; git commit -m "repeat-tempServer"; git push origin 
