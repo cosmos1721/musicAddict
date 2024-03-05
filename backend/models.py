@@ -54,7 +54,7 @@ async def spotifyPlaylist(id : str):
     for item in response.json()['tracks']['items']:
         track_info = {
             'name': item['track']['name'],
-            'image': item['track']['album']['images'][2]['url'] if item['track']['album']['images'] else None
+            'img': item['track']['album']['images'][2]['url'] if item['track']['album']['images'] else None
         }
         tracks.append(track_info)
     return playlist_name, playlist_image, tracks

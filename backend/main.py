@@ -32,10 +32,10 @@ async def  genSearchQuery(q: str):
 @app.get('/playlist')
 async def playlist(id: str):
     type = 'sp'
-    if type == 'yt':
-        playlist_name, playlist_image, tracks = await ytPlaylist(id)
     if type == 'sp':
         playlist_name, playlist_image, tracks = await spotifyPlaylist(id)
+    # elif type == 'yt':
+    #     playlist_name, playlist_image, tracks = await ytPlaylist(id)
 
     global playlist_info
     playlist_info = {

@@ -59,7 +59,7 @@ allSongs.forEach((comp, index) => {
 
 
 
-function createSongComponent(song, index,  isPlaylistItem = false) {
+function createSongComponent(song, index, isLocalItem= false, isPlaylistItem = false) {
   const songComponent = document.createElement('div');
   songComponent.classList.add('song-component');
   songComponent.dataset.index = index;
@@ -77,7 +77,7 @@ function createSongComponent(song, index,  isPlaylistItem = false) {
   songTitle.classList.add('song-title');
   songComponent.appendChild(songTitle);
 
-  // Conditionally add delete button
+  if(isLocalItem){
   const deleteButton = document.createElement('img');
   deleteButton.src = '/front-end/icons/bin.png';
   deleteButton.alt = 'Delete';
@@ -99,9 +99,13 @@ function createSongComponent(song, index,  isPlaylistItem = false) {
         highlightCurrentSong();
       }
     });
-
+  }
   return songComponent;
 }
+
+
+
+
 
 
 function displayPlaylist() {
@@ -130,7 +134,7 @@ function displayQueue() {
   queueElement.innerHTML = ''; // Clear existing content
   const list = document.createElement('div'); // Use a div to hold song components
   musicQueue.forEach((song, index) => {
-    const songComponent = createSongComponent(song, index); // Pass index here
+    const songComponent = createSongComponent(song, index, true, false); // Pass index here
     list.appendChild(songComponent); // Append the song component to the list
   });
   queueElement.appendChild(list); // Append the list to the Queue section
