@@ -47,6 +47,7 @@ async def playlist(id: str):
 
 @app.get('/play')
 async def playlistSegment():
+    #create a mongo id for the playlist stored in the db
     tracks = []
     for item in playlist_info['tracks']:
         response = await genSearchQuery(item["name"])

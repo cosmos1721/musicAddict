@@ -21,15 +21,23 @@ function activateTab(evt, tabName) {
 url = "https://musicaddict.onrender.com/"
 
 musicQueue1 = [
-  { title: "Song 1", artist: "Artist 1", albumArt: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkrFlvX7gzW284Kw2lz6_MJ0ZOq8pEOfq8ixfKP5ADOw&s", url: "https://music.youtube.com/watch?v=r7Rn4ryE_w8&si=_GebGmX1SGAWw8EN" , duration: 300},
-  { title: "Song 2", artist: "Artist 2", albumArt: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
-  { title: "Song 2", artist: "Artist 2", albumArt: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
-  { title: "Song 2", artist: "Artist 2", albumArt: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
-  { title: "Song 2", artist: "Artist 2", albumArt: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
-  { title: "Song 2", artist: "Artist 2", albumArt: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
-  { title: "Song 3", artist: "Artist 3", albumArt: "url-to-album-art-3.jpg", url: "/mnt/devesh/code/projects_git/musicAddict/front-end/icons/Ram Siya ram.mp3", duration: 200 }
+  { title: "Song 2", albumArt: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkrFlvX7gzW284Kw2lz6_MJ0ZOq8pEOfq8ixfKP5ADOw&s", url:"https://musicapi.x007.workers.dev/fetch?id=b64b134e4b8f37452cf94577dbaae5db9a50c7a57933f15813797c13dca4dc561cd87ea87e989c511d8c6ad9f8c433cbaab71ec362cff6db19e075744906718cd9ea215b99c508b78a11b66105a7a301", duration : 100},
+  { title: "Song 3", albumArt: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
+  { title: "Song 4", albumArt: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
+  { title: "Song 5", albumArt: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
+  { title: "Song 7", albumArt: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100}
 ];
 
+savedSongs = []
+playlistData1 = [
+  { playlist_name: "playlist 1", playlist_image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"},
+  { playlist_name: "playlist 2", playlist_image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"},
+  { playlist_name: "playlist 3", playlist_image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"},
+  { playlist_name: "playlist 4", playlist_image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"},
+  { playlist_name: "playlist 5", playlist_image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"}
+];
+
+let playlistData = [...playlistData1];
 let musicQueue = [... musicQueue1];
 
 let audio = new Audio();
@@ -38,45 +46,83 @@ currentSongIndex = 0;
 function highlightCurrentSong() {
 // Remove the 'active-song' class from all song components
 const allSongs = document.querySelectorAll('.song-component');
+
 allSongs.forEach((comp, index) => {
-  comp.classList.remove('active-song');
-  if (index === currentSongIndex) {
-    // Add 'active-song' class to the current song
-    comp.classList.add('active-song');
+  comp.classList.add('active-song');
+  
+  if (index != currentSongIndex) {
+    comp.classList.remove('active-song');
   }
+  
 });
 }
 
-function createSongComponent(song, index) {
+
+
+function createSongComponent(song, index,  isPlaylistItem = false) {
   const songComponent = document.createElement('div');
   songComponent.classList.add('song-component');
+  songComponent.dataset.index = index;
 
+  // Album Art
   const albumArt = document.createElement('img');
   albumArt.src = song.albumArt;
   albumArt.alt = 'Album Art';
   albumArt.classList.add('song-image');
   songComponent.appendChild(albumArt);
 
+  // Song title
   const songTitle = document.createElement('span');
   songTitle.textContent = song.title;
   songTitle.classList.add('song-title');
   songComponent.appendChild(songTitle);
 
-  // Add the index parameter to the event listener
-  songComponent.addEventListener('click', () => {
-    currentSongIndex = index; // Update the current song index
-    updatePlayer(); // Update the player with the new song
-    highlightCurrentSong(); // Highlight the current song in the queue
-  });
+  // Conditionally add delete button
+  const deleteButton = document.createElement('img');
+  deleteButton.src = '/front-end/icons/bin.png';
+  deleteButton.alt = 'Delete';
+    deleteButton.classList.add('delete-button');
+    deleteButton.onclick = function() { 
+      deleteSong(index, isPlaylistItem); };
+    songComponent.appendChild(deleteButton);
+    
+    if (isPlaylistItem) {
+      // Adjust click behavior based on whether it's a playlist item
+    }
+    
+    // Queue item click behavior
+    songComponent.addEventListener('click', (e) => {
+      if (e.target !== deleteButton) {
+        currentSongIndex = index;
+        
+        if (!isPlaylistItem) {        playSelectedSong();}
+        highlightCurrentSong();
+      }
+    });
 
   return songComponent;
 }
 
-function initMusicQueue() {
-currentSong = musicQueue[currentSongIndex]; // Set the current song to the first song
-updatePlayer();
-displayQueue();
-// updateProgressBar();
+
+function displayPlaylist() {
+  const playlistElement = document.getElementById('Playlist');
+  playlistElement.innerHTML = ''; // Clear existing content
+
+  // Your Selection component (always on top without a delete button)
+  const yourSelectionComponent = document.createElement('div');
+  yourSelectionComponent.textContent = 'Your Selections'; // Add more styling and structure as needed
+  yourSelectionComponent.classList.add('song-component', 'song-title');
+  playlistElement.appendChild(yourSelectionComponent);
+  
+  // Dynamically generate playlist components
+  playlistData.forEach((playlist, index) => {
+    // Assuming playlist object structure { playlist_name: "...", playlist_image: "..." }
+    const playlistComponent = createSongComponent({
+      title: playlist.playlist_name,
+      albumArt: playlist.playlist_image
+    }, index, true); // isDeletable is false, isPlaylistItem is true
+    playlistElement.appendChild(playlistComponent);
+  });
 }
 
 function displayQueue() {
@@ -88,7 +134,53 @@ function displayQueue() {
     list.appendChild(songComponent); // Append the song component to the list
   });
   queueElement.appendChild(list); // Append the list to the Queue section
+  
 }
+
+
+
+
+// Function to play the selected song
+function playSelectedSong() {
+  currentSong = musicQueue[currentSongIndex];
+  updatePlayer();
+}
+
+
+
+
+// Delete function to handle song deletion
+function deleteSong(index, isPlaylistItem ) {
+  const songComponent = document.querySelector(`.song-component[data-index="${index}"]`);
+  if (songComponent) {
+    // Slide-up transition
+    songComponent.style.transition = 'all 0.2s ease';
+    songComponent.style.opacity = '0';
+    songComponent.addEventListener('transitionend', function() {
+      if (isPlaylistItem) {
+        songComponent.remove(); // Remove the component after transition
+        playlistData.splice(index, 1); // Remove the song from the playlist
+        displayPlaylist(); // Refresh the playlist to remove the deleted song
+      }
+      else {
+        songComponent.remove(); // Remove the component after transition
+        musicQueue.splice(index, 1); // Remove the song from the music queue
+        displayQueue(); // Refresh the display to update indexes and the queue
+      }});
+    }
+    console.log("temp1", index, isPlaylistItem);
+}
+
+
+
+function initMusicQueue() {
+currentSong = musicQueue[currentSongIndex]; // Set the current song to the first song
+updatePlayer();
+updateProgressBar();
+displayQueue();
+displayPlaylist();
+}
+
 
 
 
@@ -108,6 +200,7 @@ blurredBackground.style.backgroundImage = `url('${currentSong.albumArt}')`;
 audio.addEventListener('loadedmetadata', function() {
   document.getElementById('totalTime').textContent = formatTime(Math.round(audio.duration));
 });
+audio.addEventListener('ended', nextSong);
 
 audio.play().then(() => {
   document.getElementById('playPauseIcon').src = '/front-end/icons/pause.png';
@@ -198,6 +291,7 @@ const playPauseIcon = document.getElementById('playPauseIcon');
 if (audio.paused) {
   audio.play().then(() => {
     playPauseIcon.src = '/front-end/icons/pause.png';
+
   }).catch(error => console.error("Playback failed", error));
 } else {
   audio.pause();
@@ -205,13 +299,8 @@ if (audio.paused) {
 }
 }
 
-
-
 function addToPlaylist() {
-pass; // Replace with actual logic to add the current song to the playlist
 }
-
-
 
 
 
