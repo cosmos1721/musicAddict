@@ -48,8 +48,10 @@ async def playlist(id: str):
 
     global playlist_info
     playlist_info = {
-        'playlist_name': playlist_name,
-        'playlist_image': playlist_image, # keep that image in frontend for display and later add
+        'info': {
+            'playlist_name': playlist_name,
+            'playlist_image': playlist_image # keep that image in frontend for display and later add
+        },
         'tracks': tracks
     }
     return playlist_info
