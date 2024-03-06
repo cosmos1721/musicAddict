@@ -21,20 +21,18 @@ function activateTab(evt, tabName) {
 url = "https://musicaddict.onrender.com/"
 
 musicQueue1 = [
-  { title: "Song 2", albumArt: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkrFlvX7gzW284Kw2lz6_MJ0ZOq8pEOfq8ixfKP5ADOw&s", url:"https://musicapi.x007.workers.dev/fetch?id=b64b134e4b8f37452cf94577dbaae5db9a50c7a57933f15813797c13dca4dc561cd87ea87e989c511d8c6ad9f8c433cbaab71ec362cff6db19e075744906718cd9ea215b99c508b78a11b66105a7a301", duration : 100},
-  { title: "Song 3", albumArt: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
-  { title: "Song 4", albumArt: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
-  { title: "Song 5", albumArt: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
-  { title: "Song 7", albumArt: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", url: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100}
+  { title: "Song 2", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkrFlvX7gzW284Kw2lz6_MJ0ZOq8pEOfq8ixfKP5ADOw&s", id:"205659dc7589f400defc73f6918b369759cd3b88cfaef01c5af3c98af7e10d683d55756d7191f1217deea14ee68a618ca8aba082073c68e1b8bef0b3aa416375"},
+  { title: "Song 3", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "b64b134e4b8f37452cf94577dbaae5db9a50c7a57933f15813797c13dca4dc563ffc3bfd8019f1c3403e913d5005bd7ea95c012fe1945b02ecb136a3afbc943bd6ac88887c821ecca3db1b4519ac2de9", duration : 100},
+  { title: "Song 4", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
+  { title: "Song 5", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
+  { title: "Song 7", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100}
 ];
 
 savedSongs = []
 playlistData1 = [
-  { playlist_name: "playlist 1", playlist_image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"},
-  { playlist_name: "playlist 2", playlist_image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"},
-  { playlist_name: "playlist 3", playlist_image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"},
-  { playlist_name: "playlist 4", playlist_image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"},
-  { playlist_name: "playlist 5", playlist_image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"}
+  {id: 1, title: "playlist 1", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"},
+  {id: 4, title: "playlist 4", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"},
+  {id: 5, title: "playlist 5", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"}
 ];
 
 let playlistData = [...playlistData1];
@@ -59,14 +57,14 @@ allSongs.forEach((comp, index) => {
 
 
 
-function createSongComponent(song, index, isLocalItem= false, isPlaylistItem = false) {
+function createSongComponent(song, index, sp= false, isLocalItem= false, isPlaylistItem = false) {
   const songComponent = document.createElement('div');
   songComponent.classList.add('song-component');
   songComponent.dataset.index = index;
 
   // Album Art
   const albumArt = document.createElement('img');
-  albumArt.src = song.albumArt;
+  albumArt.src = song.img;
   albumArt.alt = 'Album Art';
   albumArt.classList.add('song-image');
   songComponent.appendChild(albumArt);
@@ -75,9 +73,12 @@ function createSongComponent(song, index, isLocalItem= false, isPlaylistItem = f
   const songTitle = document.createElement('span');
   songTitle.textContent = song.title;
   songTitle.classList.add('song-title');
+  if (!isLocalItem) songTitle.style.fontSize = '15px'; 
+  
   songComponent.appendChild(songTitle);
 
   if(isLocalItem){
+    // console.log("temp1", index, eisPlaylistItem);
   const deleteButton = document.createElement('img');
   deleteButton.src = '/front-end/icons/bin.png';
   deleteButton.alt = 'Delete';
@@ -88,17 +89,36 @@ function createSongComponent(song, index, isLocalItem= false, isPlaylistItem = f
     
     if (isPlaylistItem) {
       // Adjust click behavior based on whether it's a playlist item
+      //for next page
     }
     
-    // Queue item click behavior
     songComponent.addEventListener('click', (e) => {
       if (e.target !== deleteButton) {
         currentSongIndex = index;
         
-        if (!isPlaylistItem) {        playSelectedSong();}
+        if (!isPlaylistItem)  playSelectedSong();
         highlightCurrentSong();
       }
     });
+  }
+  else{
+    const addToQueueButton = document.createElement('img');
+    addToQueueButton.src = '/front-end/icons/play.png';
+    addToQueueButton.alt = 'Add to Queue';
+    addToQueueButton.classList.add('delete-button');
+    addToQueueButton.onclick = function() { 
+      if(!sp){
+        console.log("temp", song);
+      musicQueue.push(song);
+      displayQueue();
+    }
+    else{
+      playlistData.push(song);
+      displayPlaylist();
+      console.log(playlistData);
+    }
+    };
+    songComponent.appendChild(addToQueueButton);
   }
   return songComponent;
 }
@@ -122,9 +142,9 @@ function displayPlaylist() {
   playlistData.forEach((playlist, index) => {
     // Assuming playlist object structure { playlist_name: "...", playlist_image: "..." }
     const playlistComponent = createSongComponent({
-      title: playlist.playlist_name,
-      albumArt: playlist.playlist_image
-    }, index, true); // isDeletable is false, isPlaylistItem is true
+      title: playlist.title,
+      img: playlist.img
+    }, index, true); 
     playlistElement.appendChild(playlistComponent);
   });
 }
@@ -134,7 +154,7 @@ function displayQueue() {
   queueElement.innerHTML = ''; // Clear existing content
   const list = document.createElement('div'); // Use a div to hold song components
   musicQueue.forEach((song, index) => {
-    const songComponent = createSongComponent(song, index, true, false); // Pass index here
+    const songComponent = createSongComponent(song, index, false, true, false); // Pass index here
     list.appendChild(songComponent); // Append the song component to the list
   });
   queueElement.appendChild(list); // Append the list to the Queue section
@@ -186,21 +206,21 @@ displayPlaylist();
 }
 
 
-
+songUrl= 'https://musicapi.x007.workers.dev/fetch?id='
 
 function updatePlayer() {
 if (!currentSong) return; 
 const mainPlayer = document.getElementById('body');
-document.getElementById('albumArt').src = currentSong.albumArt;
+document.getElementById('albumArt').src = currentSong.img;
 document.getElementById('songTitle').textContent = currentSong.title;
-audio.src = currentSong.url;
+audio.src = songUrl+currentSong.id;
 let blurredBackground = document.querySelector('.blurred-background');
 if (!blurredBackground) {
   blurredBackground = document.createElement('div');
   blurredBackground.classList.add('blurred-background');
   mainPlayer.insertBefore(blurredBackground, mainPlayer.firstChild); // Insert as the first child
 }
-blurredBackground.style.backgroundImage = `url('${currentSong.albumArt}')`;
+blurredBackground.style.backgroundImage = `url('${currentSong.img}')`;
 audio.addEventListener('loadedmetadata', function() {
   document.getElementById('totalTime').textContent = formatTime(Math.round(audio.duration));
 });
@@ -222,8 +242,6 @@ let sec = seconds % 60;
 return `${min}:${sec < 10 ? '0' : ''}${sec}`;
 }
 
-// Function to simulate song progress
-// Declare a variable outside the function to hold the interval ID
 let progressInterval;
 
 function updateProgressBar() {
@@ -236,7 +254,6 @@ audio.ontimeupdate = () => {
   document.getElementById('totalTime').textContent = formatTime(Math.round(audio.duration));
 };
 
-// Allow user to seek within the song
 const slider = document.querySelector(".slider");
 slider.addEventListener("click", function(e) {
   const sliderWidth = this.clientWidth;
@@ -290,7 +307,7 @@ updatePlayer();
 
 
 function playPauseSong() {
-const albumArt = document.getElementById('albumArt');
+const img = document.getElementById('img');
 const playPauseIcon = document.getElementById('playPauseIcon');
 if (audio.paused) {
   audio.play().then(() => {
@@ -305,6 +322,132 @@ if (audio.paused) {
 
 function addToPlaylist() {
 }
+
+
+
+
+
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.querySelector('.container input[type="text"]');
+  
+  const handleSearch = debounce(function() {
+    const query = searchInput.value.trim();
+    const playlistIdRegex = /playlist\/([a-zA-Z0-9]+)(?:\/|\?si=)?/;
+    const match = query.match(playlistIdRegex);
+    
+    console.log(query, match, playlistIdRegex);
+
+    if (match) {
+      const playlistId = match[1];
+      fetchPlaylistOrTracks(playlistId, 'playlist');
+    } else if (query) {
+      fetchPlaylistOrTracks(query, 'query');
+      console.log('Search for:', query);
+    }
+  }, 500);
+  
+  searchInput.addEventListener('input', handleSearch);
+});
+
+
+function fetchPlaylistOrTracks(id, type) {
+  if (type === 'playlist') {
+    result = url+`playlist?id=${id}`;
+  }
+  else if(type === 'query'){
+    result = url+`query?q=${id}`;
+  }
+  fetch(result)
+    .then(response => response.json())
+    .then(data => {
+      if (type === 'playlist') {
+        const playlistInfo = data.info;
+        console.log(playlistInfo);
+        const playlistData = [{
+        id: id,
+        title: playlistInfo.playlist_name, 
+        img: playlistInfo.playlist_image
+      }];
+      displaySearchResults(playlistData, true);
+      }
+      else if (type === 'query') {
+        console.log(data);
+        const searchResults = data.map(track => ({ title: track.title, img: track.img, id: track.id}));
+        displaySearchResults(searchResults);
+      }
+    })
+    .catch(error => console.error('Error fetching data:', error));
+}
+
+function displaySearchResults(results, playlist = false) {
+  const searchOutputElement = document.getElementById('searchResultsContainer');
+  searchOutputElement.classList.add('search-results');
+  searchOutputElement.innerHTML = ''; // Clear previous results
+  
+  results.forEach((result, index) => {
+    if(!playlist)
+    {songComponent = createSongComponent(result, index); }
+    else{
+      songComponent = createSongComponent(result, index, true, false, false);
+    }
+    searchOutputElement.appendChild(songComponent);
+  });
+}
+
+
+
+
+
+let hideSearchResultsTimeout;
+
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.querySelector('.container input[type="text"]');
+  const searchResultsContainer = document.getElementById('searchResultsContainer');
+
+  searchInput.addEventListener('focus', function() {
+    searchResultsContainer.style.display = 'block';
+  });
+
+  searchInput.addEventListener('blur', function() {
+    // Set a timeout to hide the search results so that it allows time for a click to be registered
+    hideSearchResultsTimeout = setTimeout(() => {
+      searchResultsContainer.style.display = 'none';
+    }, 300);
+  });
+
+  searchResultsContainer.addEventListener('click', function(event) {
+    clearTimeout(hideSearchResultsTimeout); // If a click is registered within the container, do not hide it
+  });
+
+  document.addEventListener('click', function(event) {
+    const isClickInsideInput = searchInput.contains(event.target);
+    const isClickInsideSearchResults = searchResultsContainer.contains(event.target);
+
+    if (!isClickInsideInput && !isClickInsideSearchResults) {
+      searchResultsContainer.style.display = 'none';
+    }
+  });
+});
+
+
+
+
+
+
+
+
+
 
 
 

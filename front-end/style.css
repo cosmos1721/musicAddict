@@ -2,7 +2,7 @@
 :root {
   --bg: #EBEBEB;
   --black: #333333;
-  --prog: #A4B7BE;
+  --prog: #797979;
   --white: #ffffff;
 }
 
@@ -20,7 +20,7 @@
   list-style-type: none;
   margin: 0;
   padding: 5px 5px 0 5px;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #33333398;
   position:relative;
   top: 0;
@@ -56,7 +56,6 @@
   position: absolute;
   bottom: 0;
   transition: width 0.5s, left 0.5s;
-  z-index: 10;
 }
   
 .tabcontent {
@@ -256,14 +255,28 @@
 
 
 
-
+.search-results {
+  display: none; 
+  width: 280px;
+  position: absolute;
+  top: 32px; 
+  left: 0;
+  right: 0;
+  z-index: 10; 
+  background-color: var(--prog);
+  font-size: 10px;
+  min-height: 50px;
+  max-height: 300px;
+  border-radius: 0 0 10px 10px;
+  transition: all 0.8s all;
+}
 
 
 
 
 
 .container {
-  .search {
+  .searchIco { 
     position: absolute;
     margin: auto;
     top: 0;
@@ -318,9 +331,7 @@
     outline: none;
     background: rgba(220, 20, 60, 0.753);
     text-shadow: 0 0 10px crimson;
-
     border-radius: 30px;
-
     transition: all 1s;
     opacity: 0;
     z-index: 5;
@@ -334,9 +345,10 @@
       opacity: 1;
       cursor: text;
       padding-left : 40px;
-      padding-top: 1px;
+      padding-top: 1px;      
     }
-    &:focus ~ .search {
+
+    &:focus ~ .searchIco {
       background: #151515;
       z-index: 6;
       &::before {
@@ -353,6 +365,7 @@
         background: white;
         border-radius: 0%;
         transform: rotate(-45deg);
+        
       }
     }
     &::placeholder {
@@ -366,9 +379,14 @@
   }
 }
 
+
+
+
+
 .song-component {
   display: flex;
   align-items: center;
+  
   margin-bottom: 10px;
   opacity: 0; /* Change opacity to 1 to start with */
   animation: slideIn 0.5s ease-out forwards;
@@ -388,7 +406,6 @@
     opacity: 1;
   }
 }
-
 
 
 .song-component:hover {
@@ -419,7 +436,7 @@
 
 
 
-#Queue, #Search, #Playlist {
+#Queue, #Search, #Playlist, .search-results {
   padding: 15px;
   max-height: 300px; /* adjust as necessary */
   overflow-y: auto; /* enables vertical scrolling */
