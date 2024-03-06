@@ -49,6 +49,7 @@ async def playlist(id: str):
     global playlist_info
     playlist_info = {
         'info': {
+            'id': id,
             'playlist_name': playlist_name,
             'playlist_image': playlist_image # keep that image in frontend for display and later add
         },
