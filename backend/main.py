@@ -1,4 +1,5 @@
 
+from bson import ObjectId
 from models import *
 from models import spotifyPlaylist
 from fastapi.middleware.cors import CORSMiddleware
@@ -24,12 +25,45 @@ app.add_event_handler("startup", main)
 async def read_root():
     return {"extension" : "musicAddict"} 
 
-
- 
-    # search for param to be given by front end logic search only for gen
-    # will check in frontend if the search is a word or it contains a url, if url, push to playlist(), else, push to search()
-    #logic will be like that frontend will only call api if threres anything in it 
+@app.post('/login')
+async def retrieve(email,password) :
+    collection = db["creds"]
     
+    user_details = collection.find_one({"email":email,"password":password})
+    if user_details:
+        mongoId=  str(user_details.get('_id'))
+        return mongoId    
+    else: 
+        return False
+    
+@app.post('/signup')
+async def add_data(email: str, password: str) -> str:
+    collection = db["creds"]
+    
+    existing_user = collection.find_one({"email": email})
+    
+    if existing_user:
+        return None
+    else:
+        user_data = {
+            "email": email,
+            "password": password,
+        }
+        result = collection.insert_one(user_data)
+        mongoId= str(result.inserted_id)
+        await edit_data(emptyData, "add", mongoId)
+        return mongoId
+    
+@app.post('/editData')
+async def edit_data(infoData, changeState, mongoId: str) -> str:
+    collection = db["info"]
+    if changeState == "add":
+        result = collection.insert_one(infoData)
+    elif changeState == "edit":
+        result = collection.update_one({"_id": ObjectId(mongoId)}, {"$set": infoData})
+    return result
+
+
 @app.get('/query')
 async def  genSearchQuery(q: str):
     url = os.getenv("MUSIC_API") + f"search?q={q}&searchEngine=seevn"
@@ -61,6 +95,7 @@ async def playlist(id: str):
 async def playlistSegment():
     #create a mongo id for the playlist stored in the db
     tracks = []
+    tracks.append(playlist_info['info']['id'])
     for item in playlist_info['tracks']:
         response = await genSearchQuery(item["name"])
         tracks.append(response[0])

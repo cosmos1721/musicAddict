@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from dotenv import load_dotenv
+from pymongo import MongoClient
 import os
 import base64
 import requests
@@ -8,7 +9,13 @@ import asyncio
 load_dotenv()
 client_id = os.getenv("CLIENT_ID")
 client_secret = os.getenv("CLIENT_SECRET")
+client = MongoClient(os.getenv("MONGO_URL"))
+db = client[os.getenv("MONGO_DB")]
 
+
+emptyData = {
+    "savedSongs" : [],
+    "playlistData" : []}
 
 async def auth():
     auth_str= client_id + ":" + client_secret
