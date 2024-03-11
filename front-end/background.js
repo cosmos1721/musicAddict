@@ -6,15 +6,22 @@ chrome.runtime.onInstalled.addListener(() => {
     checkLoginStatus();
   });
   
-  function checkLoginStatus() {
-    chrome.storage.local.get(['token'], function(result) {
-      if (result.token) {
-        // User is logged in
-        chrome.browserAction.setPopup({popup: 'app.html'});
-      } else {
-        // User is not logged in
-        chrome.browserAction.setPopup({popup: 'login.html'});
-      }
-    });
+function checkLoginStatus() {
+  let musicAddict = localStorage.getItem('musicAddictResponse');
+
+    if (musicAddict) {
+    
+      (result) => {
+        if (result.myId) {
+          chrome.browserAction.setPopup({popup: 'main.html'});
+        } else {
+          // User is not logged in
+          chrome.browserAction.setPopup({popup: 'index.html'});
+        }
+      };
+      console.log('Data updated successfully.');
+  } else {
+      console.log('No data found in localStorage.');
+  }
   }
   

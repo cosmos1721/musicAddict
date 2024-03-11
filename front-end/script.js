@@ -1,48 +1,82 @@
 function activateTab(evt, tabName) {
-  var i, tabcontent, tablinks, indicator;
+  var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
   }
+  // Get all elements with class="tab" and remove the class "active"
   tablinks = document.getElementsByClassName("tab");
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
+  // Show the current tab, and add an "active" class to the button that opened the tab
 
-  // Move indicator
-  indicator = document.getElementById("indicator");
-  const activeTab = evt.currentTarget;
-  indicator.style.width = activeTab.offsetWidth + "px";
-  indicator.style.left = activeTab.offsetLeft + "px";
+  document.getElementById(tabName).style.display = "block";
+  
+  if (evt) {
+    evt.currentTarget.className += " active";
+    // Move indicator
+    indicator = document.getElementById("indicator");
+    if (indicator) {
+      const activeTab = evt.currentTarget;
+      indicator.style.width = activeTab.offsetWidth + "px";
+      indicator.style.left = activeTab.offsetLeft + "px";
+    }
+  }
 }
 
+
 url = "https://musicaddict.onrender.com/"
+url1= "http://127.0.0.1:8000/"
+
 
 musicQueue1 = [
-  { title: "Song 2", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkrFlvX7gzW284Kw2lz6_MJ0ZOq8pEOfq8ixfKP5ADOw&s", id:"205659dc7589f400defc73f6918b369759cd3b88cfaef01c5af3c98af7e10d683d55756d7191f1217deea14ee68a618ca8aba082073c68e1b8bef0b3aa416375"},
+  { title: "playlist 2", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkrFlvX7gzW284Kw2lz6_MJ0ZOq8pEOfq8ixfKP5ADOw&s", id:"205659dc7589f400defc73f6918b369759cd3b88cfaef01c5af3c98af7e10d683d55756d7191f1217deea14ee68a618ca8aba082073c68e1b8bef0b3aa416375"},
   { title: "Song 3", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "b64b134e4b8f37452cf94577dbaae5db9a50c7a57933f15813797c13dca4dc563ffc3bfd8019f1c3403e913d5005bd7ea95c012fe1945b02ecb136a3afbc943bd6ac88887c821ecca3db1b4519ac2de9", duration : 100},
-  { title: "Song 4", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
-  { title: "Song 5", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100},
-  { title: "Song 7", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3", duration : 100}
+  { title: "playlist 4", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3"},
+  { title: "Song 5", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3"},
+  { title: "Song 7", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3"}
 ];
 
-savedSongs = []
-playlistData1 = [
-  {id: 1, title: "playlist 1", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"},
-  {id: 4, title: "playlist 4", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"},
-  {id: 5, title: "playlist 5", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388"}
-];
-
-let playlistData = [...playlistData1];
+let inData = localStorage.getItem('musicAddictResponse');
+let info = JSON.parse(inData);
+let playlistData = [...info.playlistData];
+let savedSongs = [...info.savedSongs];
 let musicQueue = [... musicQueue1];
+// let musicQueue = [];
+
+async function postData() {
+  const editInfo = JSON.stringify(info); // You already have this line
+  const data = {
+    editInfo: editInfo,
+    state: 'edit',
+    mystateId: info.myId
+  };
+
+  const response = await fetch(url + "editData", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  }).catch(error => {
+    console.error('Error:', error);
+  });
+
+info.playlistData = playlistData;
+info.savedSongs = savedSongs;
+localStorage.setItem('musicAddictResponse', JSON.stringify(info));
+}
+setInterval(postData, 3 * 60 * 1000); // 3 minutes in milliseconds
+
+
+
 
 let audio = new Audio();
 currentSongIndex = 0; 
+currentPlaylistIndex = 0;
 
 function highlightCurrentSong() {
-// Remove the 'active-song' class from all song components
 const allSongs = document.querySelectorAll('.song-component');
 
 allSongs.forEach((comp, index) => {
@@ -78,7 +112,6 @@ function createSongComponent(song, index, sp= false, isLocalItem= false, isPlayl
   songComponent.appendChild(songTitle);
 
   if(isLocalItem){
-    // console.log("temp1", index, eisPlaylistItem);
   const deleteButton = document.createElement('img');
   deleteButton.src = '/front-end/icons/bin.png';
   deleteButton.alt = 'Delete';
@@ -88,15 +121,16 @@ function createSongComponent(song, index, sp= false, isLocalItem= false, isPlayl
     songComponent.appendChild(deleteButton);
     
     if (isPlaylistItem) {
-      // Adjust click behavior based on whether it's a playlist item
-      //for next page
+      // create play button and onclick function
     }
-    
     songComponent.addEventListener('click', (e) => {
       if (e.target !== deleteButton) {
+        if (!isPlaylistItem) {
         currentSongIndex = index;
-        
-        if (!isPlaylistItem)  playSelectedSong();
+        playSelectedSong();}
+        else{
+          index=currentPlaylistIndex;
+        }
         highlightCurrentSong();
       }
     });
@@ -108,19 +142,78 @@ function createSongComponent(song, index, sp= false, isLocalItem= false, isPlayl
     addToQueueButton.classList.add('delete-button');
     addToQueueButton.onclick = function() { 
       if(!sp){
-        console.log("temp", song);
       musicQueue.push(song);
       displayQueue();
     }
     else{
       playlistData.push(song);
       displayPlaylist();
-      console.log(playlistData);
+      startStoreTracks(song.id);
     }
     };
     songComponent.appendChild(addToQueueButton);
   }
   return songComponent;
+}
+
+async function startStoreTracks(playlistId) {
+  let response;
+  try {
+    response = await fetch(url + "play", {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    });
+  } catch (error) {
+    console.error('Fetch error:', error);
+    return; // Early return in case of fetch error
+  }
+
+  try {
+    const data = await response.json();
+
+    // Find the specific playlist dataset by its id
+    const playlist = playlistData.find(p => p.id === playlistId);
+    if (!playlist) {
+      console.error('Playlist not found:', playlistId);
+      return;
+    }
+    if (!playlist.tracks) {
+      playlist.tracks = [];
+    }
+    playlist.tracks.push(data);
+  } catch (error) {
+    console.error('JSON parsing error:', error);
+  }
+}
+
+function displaySongs(playlistId) {
+  activateTab(null, 'inPlaylist'); 
+  const playlist = playlistData.find(p => p.id === playlistId);
+  if (!playlist) return;
+
+  document.getElementById('Playlist').style.display = 'none';
+  const inPlaylistDiv = document.getElementById('inPlaylist');
+  const backButton = document.createElement('img');
+  backButton.src = '/front-end/icons/backPlaylist.png';
+  backButton.alt = 'Back';
+  backButton.id = 'backButton';
+  backButton.onclick = function() {
+    document.getElementById('temp').style.display = 'block';
+    inPlaylistDiv.innerHTML = '';
+    activateTab(null, 'Playlist');     
+  };
+  inPlaylistDiv.appendChild(backButton);
+  const playlistNameHeader = document.createElement('h2');
+  playlistNameHeader.textContent = playlist.title;
+  playlistNameHeader.classList.add('playlist-name-header');
+  inPlaylistDiv.appendChild(playlistNameHeader);
+
+  playlist.tracks[0].forEach((song, index) => {
+    const songComponent = createSongComponent(song, index, true, false, false);
+    inPlaylistDiv.appendChild(songComponent);
+  });
 }
 
 
@@ -130,24 +223,26 @@ function createSongComponent(song, index, sp= false, isLocalItem= false, isPlayl
 
 function displayPlaylist() {
   const playlistElement = document.getElementById('Playlist');
-  playlistElement.innerHTML = ''; // Clear existing content
+  playlistElement.innerHTML = ''; 
 
-  // Your Selection component (always on top without a delete button)
   const yourSelectionComponent = document.createElement('div');
   yourSelectionComponent.textContent = 'Your Selections'; // Add more styling and structure as needed
   yourSelectionComponent.classList.add('song-component', 'song-title');
   playlistElement.appendChild(yourSelectionComponent);
+  // displaSongs();
   
-  // Dynamically generate playlist components
   playlistData.forEach((playlist, index) => {
-    // Assuming playlist object structure { playlist_name: "...", playlist_image: "..." }
-    const playlistComponent = createSongComponent({
-      title: playlist.title,
-      img: playlist.img
-    }, index, true); 
+    const playlistComponent = createSongComponent(playlist, index, false, true,  true); 
+    playlistComponent.onclick = function() {
+      document.getElementById('temp').style.display = 'none';
+      displaySongs(playlist.id);
+      highlightCurrentSong();
+    }
     playlistElement.appendChild(playlistComponent);
   });
 }
+
+
 
 function displayQueue() {
   const queueElement = document.getElementById('Queue');
@@ -183,7 +278,7 @@ function deleteSong(index, isPlaylistItem ) {
     songComponent.addEventListener('transitionend', function() {
       if (isPlaylistItem) {
         songComponent.remove(); // Remove the component after transition
-        playlistData.splice(index, 1); // Remove the song from the playlist
+        playlistData.splice(currentPlaylistIndex, 1); // Remove the song from the playlist
         displayPlaylist(); // Refresh the playlist to remove the deleted song
       }
       else {
@@ -192,7 +287,6 @@ function deleteSong(index, isPlaylistItem ) {
         displayQueue(); // Refresh the display to update indexes and the queue
       }});
     }
-    console.log("temp1", index, isPlaylistItem);
 }
 
 
@@ -203,6 +297,7 @@ updatePlayer();
 updateProgressBar();
 displayQueue();
 displayPlaylist();
+postData();
 }
 
 
@@ -346,14 +441,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const playlistIdRegex = /playlist\/([a-zA-Z0-9]+)(?:\/|\?si=)?/;
     const match = query.match(playlistIdRegex);
     
-    console.log(query, match, playlistIdRegex);
 
     if (match) {
       const playlistId = match[1];
       fetchPlaylistOrTracks(playlistId, 'playlist');
     } else if (query) {
       fetchPlaylistOrTracks(query, 'query');
-      console.log('Search for:', query);
     }
   }, 500);
   
@@ -373,7 +466,6 @@ function fetchPlaylistOrTracks(id, type) {
     .then(data => {
       if (type === 'playlist') {
         const playlistInfo = data.info;
-        console.log(playlistInfo);
         const playlistData = [{
         id: id,
         title: playlistInfo.playlist_name, 
@@ -382,7 +474,6 @@ function fetchPlaylistOrTracks(id, type) {
       displaySearchResults(playlistData, true);
       }
       else if (type === 'query') {
-        console.log(data);
         const searchResults = data.map(track => ({ title: track.title, img: track.img, id: track.id}));
         displaySearchResults(searchResults);
       }

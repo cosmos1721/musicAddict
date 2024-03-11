@@ -108,7 +108,7 @@
   overflow: hidden;
   position: relative;
   background-color: var(--black);
-  height: 15em;
+  height: 20em;
   width: 33em;
 }
 /* Update the .main-align class to be relative so that the absolute positioning of children works correctly */
@@ -266,7 +266,7 @@
   background-color: var(--prog);
   font-size: 10px;
   min-height: 50px;
-  max-height: 300px;
+  max-height: 20em;
   border-radius: 0 0 10px 10px;
   transition: all 0.8s all;
 }
@@ -436,11 +436,31 @@
 
 
 
-#Queue, #Search, #Playlist, .search-results {
+#Queue, #Search, #Playlist, #inPlaylist, .search-results {
   padding: 15px;
-  max-height: 300px; /* adjust as necessary */
+  height: 20em;
+  width: 33em;
   overflow-y: auto; /* enables vertical scrolling */
 }
 
+#temp{
+  height: 20em;
+}
 
+
+
+
+#backButton {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.playlist-name-header {
+  font-size: 24px;
+  color: var(--white);
+  align-items: center;
+  /* margin-left: 36px;  */
+}
 

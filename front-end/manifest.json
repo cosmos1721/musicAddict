@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "An interactive music app.",
   "manifest_version": 3,
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
   "action": {
     "default_popup": "main.html"
   },
@@ -10,18 +14,14 @@
     "activeTab",
     "storage",
     "tabs",
-    "http://*/*",
-    "https://*/*"
+    "localStorage"
+
   ],
 
   "web_accessible_resources": [
     {
       "resources": [
-        "icons/*",
-        "main.html",
-        "style.css",
-        "script.js"
-      ],
+        "icons/*"      ],
       "matches": [
         "<all_urls>"
       ]
