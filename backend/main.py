@@ -86,14 +86,13 @@ async def  genSearchQuery(q: str):
     url = os.getenv("MUSIC_API") + f"search?q={q}&searchEngine=wunk"
     response = requests.get(url)
     search = response.json()['response']
-    #click on forntend and then play directly 
     return search 
 
 @app.get('/playlist')
 async def playlist(id: str):
     type = 'sp'
     if type == 'sp':
-        playlist_name, playlist_image, tracks = await spotifyPlaylist(id)
+        playlist_name, playlist_image, tracksList = await spotifyPlaylist(id)
     # elif type == 'yt':
     #     playlist_name, playlist_image, tracks = await ytPlaylist(id)
     global playlist_info
@@ -103,7 +102,7 @@ async def playlist(id: str):
             'playlist_name': playlist_name,
             'playlist_image': playlist_image # keep that image in frontend for display and later add
         },
-        'tracks': tracks
+        'tracks': tracksList
     }
     return playlist_info
 
@@ -113,8 +112,13 @@ async def playlistSegment():
     tracks.append(playlist_info['info']['id'])
     for item in playlist_info['tracks']:
         response = await genSearchQuery(item["name"])
-        tracks.append(response[0])
-        return tracks
+        print(item["name"])
+        try:
+            tracks.append(response[0])
+        except IndexError:
+            # Skip this item and continue to the next one
+            continue
+    return tracks
 
 # @app.post('/updatemongo')
 
