@@ -28,26 +28,26 @@ async def read_root():
     return {"extension" : "musicAddict"} 
 
 @app.post('/login')
-async def retrieve(email: str, password: str) -> str:
+async def retrieve(email: str, password: str) -> dict:
     collection = db["creds"]
     
     user_details = collection.find_one({"email": email, "password": password})
     if user_details:
         mongoId = str(user_details.get('_id'))
         Data = await edit_data(False, "show", mongoId)
-        return str(Data)  # Directly return the string representation
+        return {"data": Data}  # Directly return the string representation
     else: 
-        return "User not found"
+        return {"message":"User not found"}
 
     
 @app.post('/signup')
-async def add_data(email: str, password: str) -> str:
+async def add_data(email: str, password: str) -> dict:
     collection = db["creds"]
     
     existing_user = collection.find_one({"email": email})
     
     if existing_user:
-        return "User already exists"
+        return {"message": "User already exists"}
     else:
         user_data = {
             "email": email,
@@ -61,10 +61,10 @@ async def add_data(email: str, password: str) -> str:
             "playlistData": []
         }
         await edit_data(emptyData, "add", mongoId)
-        return f"{emptyData}"
+        return {"data":emptyData}
     
 @app.post('/editData')
-async def edit_data(infoData, changeState, mongoId: str) -> str:
+async def edit_data(infoData, changeState, mongoId: str) -> dict:
     collection = db["info"]
     resultId = collection.find_one({"myId": mongoId})
     print(resultId)
@@ -73,8 +73,12 @@ async def edit_data(infoData, changeState, mongoId: str) -> str:
     elif changeState == "edit":
         result = collection.update_one({"_id": resultId["_id"]}, {"$set": json.loads(infoData)})
     elif changeState == "show":
-        result= resultId
-    return str(result)
+        result= {
+            "myId": resultId["myId"],
+            "savedSongs": resultId["savedSongs"],
+            "playlistData": resultId["playlistData"]
+        }
+    return {"result": result}
 
 
 @app.get('/query')
