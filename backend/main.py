@@ -102,7 +102,7 @@ async def playlist(id: str):
             'playlist_name': playlist_name,
             'playlist_image': playlist_image # keep that image in frontend for display and later add
         },
-        'tracks': tracks
+        'tracks': [tracks]  # Fix: Change {} to []
     }
     return playlist_info
 
