@@ -4,12 +4,6 @@ from models import *
 from models import spotifyPlaylist
 from fastapi.middleware.cors import CORSMiddleware
 
-from pydantic import BaseModel
-
-class UserLogin(BaseModel):
-    email: str
-    password: str
-
 
 app = FastAPI()
 
@@ -34,7 +28,7 @@ async def read_root():
     return {"extension" : "musicAddict"} 
 
 @app.post('/login')
-async def retrieve(email: UserLogin.email, password: UserLogin.password) -> str:
+async def retrieve(email: str, password: str) -> str:
     collection = db["creds"]
     
     user_details = collection.find_one({"email": email, "password": password})
