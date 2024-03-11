@@ -83,7 +83,7 @@ async def edit_data(infoData, changeState, mongoId: str) -> dict:
 
 @app.get('/query')
 async def  genSearchQuery(q: str):
-    url = os.getenv("MUSIC_API") + f"search?q={q}&searchEngine=seevn"
+    url = os.getenv("MUSIC_API") + f"search?q={q}&searchEngine=wunk"
     response = requests.get(url)
     search = response.json()['response']
     #click on forntend and then play directly 
