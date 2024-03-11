@@ -61,7 +61,11 @@ async def spotifyPlaylist(id : str):
         tracksInfo.append(track_info)
     return playlist_name, playlist_image, tracksInfo
 
-
+async def  genQuery(q: str):
+    url = os.getenv("MUSIC_API") + f"search?q={q}&searchEngine=wunk"
+    response = requests.get(url)
+    search = response.json()['response']
+    return search 
 
 
 async def ytPlaylist(id : str):

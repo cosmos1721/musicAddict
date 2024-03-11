@@ -92,9 +92,9 @@ async def updateData(data: EditData):
 @app.get('/query')
 async def  genSearchQuery(q: str):
     url = os.getenv("MUSIC_API") + f"search?q={q}&searchEngine=wunk"
-    response = requests.get(url)
-    search = response.json()['response']
-    return search 
+    responseDump = requests.get(url)
+    searchQuery = responseDump.json()['response']
+    return searchQuery
 
 @app.get('/playlist')
 async def playlist(id: str):
@@ -112,14 +112,15 @@ async def playlist(id: str):
         },
         'tracks': tracksList
     }
+    print(playlist_info)
     return playlist_info
 
 @app.get('/play')
 async def playlistSegment():
     tracks = []
-    tracks.append(playlist_info['info']['id'])
+    # tracks.append(playlist_info['info']['id'])
     for item in playlist_info['tracks']:
-        response = await genSearchQuery(item["name"])
+        response = await genQuery(item["name"])
         print(item["name"])
         try:
             tracks.append(response[0])
@@ -128,6 +129,3 @@ async def playlistSegment():
             continue
     return tracks
 
-# @app.post('/updatemongo')
-
-#         await edit_data(response[0], "edit", playlist_info['info']['id'])
