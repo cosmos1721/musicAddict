@@ -35,7 +35,7 @@ async def retrieve(email: str, password: str) -> dict:
     if user_details:
         mongoId = str(user_details.get('_id'))
         Data = await edit_data(False, "show", mongoId)
-        return {"data": Data}  # Directly return the string representation
+        return Data  # Directly return the string representation
     else: 
         return {"message":"User not found"}
 
@@ -61,7 +61,7 @@ async def add_data(email: str, password: str) -> dict:
             "playlistData": []
         }
         await edit_data(emptyData, "add", mongoId)
-        return {"data":emptyData}
+        return emptyData
     
 @app.post('/editData')
 async def edit_data(infoData, changeState, mongoId: str) -> dict:
@@ -78,7 +78,7 @@ async def edit_data(infoData, changeState, mongoId: str) -> dict:
             "savedSongs": resultId["savedSongs"],
             "playlistData": resultId["playlistData"]
         }
-    return {"result": result}
+    return result
 
 
 @app.get('/query')
