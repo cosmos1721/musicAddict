@@ -98,11 +98,12 @@ async def playlist(id: str):
     #     playlist_name, playlist_image, tracks = await ytPlaylist(id)
     global playlist_info
     playlist_info = {
-        id: {
+        'info':{
+            'id': id, 
             'playlist_name': playlist_name,
             'playlist_image': playlist_image # keep that image in frontend for display and later add
         },
-        'tracks': [tracks]  # Fix: Change {} to []
+        'tracks': tracks
     }
     return playlist_info
 
