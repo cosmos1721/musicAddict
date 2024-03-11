@@ -13,9 +13,6 @@ client = MongoClient(os.getenv("MONGO_URL"))
 db = client[os.getenv("MONGO_DB")]
 
 
-emptyData = {
-    "savedSongs" : [],
-    "playlistData" : []}
 
 async def auth():
     auth_str= client_id + ":" + client_secret
