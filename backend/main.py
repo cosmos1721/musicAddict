@@ -1,7 +1,10 @@
 
 import json
+from fastapi import HTTPException
+
+from pydantic import BaseModel
 from models import *
-from models import spotifyPlaylist
+from models import spotifyPlaylist, edit_data
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -63,22 +66,27 @@ async def add_data(email: str, password: str) -> dict:
         await edit_data(emptyData, "add", mongoId)
         return emptyData
     
+
+
+class EditData(BaseModel):
+    editInfo: str
+    state: str
+    mystateId: str
+
 @app.post('/editData')
-async def edit_data(infoData, changeState, mongoId: str) -> dict:
+async def updateData(data: EditData):
     collection = db["info"]
-    resultId = collection.find_one({"myId": mongoId})
-    print(resultId)
-    if changeState == "add":
-        result = collection.insert_one(infoData)
-    elif changeState == "edit":
-        result = collection.update_one({"_id": resultId["_id"]}, {"$set": json.loads(infoData)})
-    elif changeState == "show":
-        result= {
-            "myId": resultId["myId"],
-            "savedSongs": resultId["savedSongs"],
-            "playlistData": resultId["playlistData"]
-        }
-    return result
+    resultId = collection.find_one({"myId": data.mystateId})
+    
+    if not resultId:
+        raise HTTPException(status_code=404, detail="Item not found")
+    
+    if data.state == "edit":
+        infoData = json.loads(data.editInfo)
+        result = collection.update_one({"_id": resultId["_id"]}, {"$set": infoData})
+        print(result)    
+    return {"message": "Success"}
+
 
 
 @app.get('/query')

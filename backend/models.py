@@ -68,6 +68,20 @@ async def ytPlaylist(id : str):
     
     pass
 
+async def edit_data(infoData, changeState: str, mongoId: str) -> dict:
+    collection = db["info"]
+    resultId = collection.find_one({"myId": mongoId})
+    print(resultId)
+    if changeState == "add":
+        result = collection.insert_one(infoData)
+    elif changeState == "show":
+        result= {
+            "myId": resultId["myId"],
+            "savedSongs": resultId["savedSongs"],
+            "playlistData": resultId["playlistData"]
+        }
+    return result
+
 
 
 # https://github.com/mohd-baquir-qureshi/music-api
