@@ -30,13 +30,7 @@ url = "https://musicaddict.onrender.com/"
 url1= "http://127.0.0.1:8000/"
 
 
-musicQueue1 = [
-  { title: "playlist 2", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkrFlvX7gzW284Kw2lz6_MJ0ZOq8pEOfq8ixfKP5ADOw&s", id:"205659dc7589f400defc73f6918b369759cd3b88cfaef01c5af3c98af7e10d683d55756d7191f1217deea14ee68a618ca8aba082073c68e1b8bef0b3aa416375"},
-  { title: "Song 3", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "b64b134e4b8f37452cf94577dbaae5db9a50c7a57933f15813797c13dca4dc563ffc3bfd8019f1c3403e913d5005bd7ea95c012fe1945b02ecb136a3afbc943bd6ac88887c821ecca3db1b4519ac2de9", duration : 100},
-  { title: "playlist 4", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3"},
-  { title: "Song 5", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3"},
-  { title: "Song 7", img: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202212/zomato-sixteen_nine.jpg?VersionId=V5.IIjNl0yTWW2VsCOsNdenhYf6z4KvS&size=690:388", id: "https://www.pagalworld.com.cm/siteuploads/files/sfd134/66697/%20Ram%20Siya%20Ram(PagalWorld.com.cm).mp3"}
-];
+
 
 let inData = localStorage.getItem('musicAddictResponse');
 let info = JSON.parse(inData);
@@ -113,7 +107,7 @@ function createSongComponent(song, index, sp= false, isLocalItem= false, isPlayl
 
   if(isLocalItem){
   const deleteButton = document.createElement('img');
-  deleteButton.src = '/front-end/icons/bin.png';
+  deleteButton.src = 'icons/bin.png';
   deleteButton.alt = 'Delete';
     deleteButton.classList.add('delete-button');
     deleteButton.onclick = function() { 
@@ -137,7 +131,7 @@ function createSongComponent(song, index, sp= false, isLocalItem= false, isPlayl
   }
   else{
     const addToQueueButton = document.createElement('img');
-    addToQueueButton.src = '/front-end/icons/play.png';
+    addToQueueButton.src = 'icons/play.png';
     addToQueueButton.alt = 'Add to Queue';
     addToQueueButton.classList.add('delete-button');
     addToQueueButton.onclick = function() { 
@@ -196,7 +190,7 @@ function displaySongs(playlistId) {
   document.getElementById('Playlist').style.display = 'none';
   const inPlaylistDiv = document.getElementById('inPlaylist');
   const backButton = document.createElement('img');
-  backButton.src = '/front-end/icons/backPlaylist.png';
+  backButton.src = 'icons/backPlaylist.png';
   backButton.alt = 'Back';
   backButton.id = 'backButton';
   backButton.onclick = function() {
@@ -322,7 +316,7 @@ audio.addEventListener('loadedmetadata', function() {
 audio.addEventListener('ended', nextSong);
 
 audio.play().then(() => {
-  document.getElementById('playPauseIcon').src = '/front-end/icons/pause.png';
+  document.getElementById('playPauseIcon').src = 'icons/pause.png';
 }).catch(error => console.error("Playback failed", error));
 
 updateProgressBar();
@@ -386,11 +380,11 @@ if (!isShuffleActive) {
     [musicQueue[i], musicQueue[j]] = [musicQueue[j], musicQueue[i]];
   }
   isShuffleActive = true;
-  document.getElementById('shuffleButtonIcon').src = '/front-end/icons/shuffle-on.png';
+  document.getElementById('shuffleButtonIcon').src = 'icons/shuffle-on.png';
 } else {
   musicQueue = [...originalQueue];
   isShuffleActive = false;
-  document.getElementById('shuffleButtonIcon').src = '/front-end/icons/shuffle.png';
+  document.getElementById('shuffleButtonIcon').src = 'icons/shuffle.png';
   
 }
 currentSongIndex = 0; // Reset to the first song of the (new) queue
@@ -406,12 +400,12 @@ const img = document.getElementById('img');
 const playPauseIcon = document.getElementById('playPauseIcon');
 if (audio.paused) {
   audio.play().then(() => {
-    playPauseIcon.src = '/front-end/icons/pause.png';
+    playPauseIcon.src = 'icons/pause.png';
 
   }).catch(error => console.error("Playback failed", error));
 } else {
   audio.pause();
-  playPauseIcon.src = '/front-end/icons/play.png';
+  playPauseIcon.src = 'icons/play.png';
 }
 }
 
